@@ -14,7 +14,6 @@ Source:  %{theme_name}-%{version}.tar.bz2
 URL:     http://kde-look.org/content/show.php?content=21396
 Requires: superkaramba >= 0.35
 Requires: python
-BuildRoot: %{_tmppath}/%{name}-buildroot
 
 %description
 This is a superkaramba theme which is a desktop applet 
