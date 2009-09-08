@@ -2,7 +2,7 @@
 %define theme_name      fantastik
 %define name            %{base_name}-%{theme_name}
 %define version         3.0
-%define release         %mkrel 6
+%define release         %mkrel 7
 
 Name:	 %{name}
 Version: %{version}
