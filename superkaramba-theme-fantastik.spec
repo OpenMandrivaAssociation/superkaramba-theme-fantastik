@@ -54,3 +54,39 @@ fi
 
 
 
+
+
+%changelog
+* Tue Sep 08 2009 Thierry Vignaud <tvignaud@mandriva.com> 3.0-7mdv2010.0
++ Revision: 434191
+- rebuild
+
+* Sat Aug 02 2008 Thierry Vignaud <tvignaud@mandriva.com> 3.0-6mdv2009.0
++ Revision: 261240
+- rebuild
+
+* Tue Jul 29 2008 Thierry Vignaud <tvignaud@mandriva.com> 3.0-5mdv2009.0
++ Revision: 253757
+- rebuild
+
+* Sun Mar 02 2008 Nicolas Lécureuil <neoclust@mandriva.org> 3.0-3mdv2008.1
++ Revision: 177559
+- [BUGFIX] Fix uninstall ( thanks misc) (Bug #22642)
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+* Mon Dec 17 2007 Thierry Vignaud <tvignaud@mandriva.com> 3.0-2mdv2008.1
++ Revision: 128070
+- kill re-definition of %%buildroot on Pixel's request
+- use %%mkrel
+- import superkaramba-theme-fantastik
+
+
+* Sun Mar 06 2005 Sebastien Savarin <plouf@mandrake.org> 3.0-2mdk
+- spec file correction thanks to couriousous
+
+* Sat Mar 05 2005 Sebastien Savarin <plouf@mandrake.org> 3.0-1mdk
+- Initial Release.
+
+
