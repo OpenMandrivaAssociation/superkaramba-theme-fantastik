@@ -1,41 +1,25 @@
-%define base_name       superkaramba-theme
 %define theme_name      fantastik
-%define name            %{base_name}-%{theme_name}
-%define version         3.0
-%define release         %mkrel 7
 
-Name:	 %{name}
-Version: %{version}
-Release: %{release}
-Summary: Monitoring theme for superkaramba
-License: GPL
-Group:   Monitoring
-Source:  %{theme_name}-%{version}.tar.bz2
-URL:     http://kde-look.org/content/show.php?content=21396
-Requires: superkaramba >= 0.35
-Requires: python
-BuildRoot: %{_tmppath}/%{name}-buildroot
+Summary:	Monitoring theme for superkaramba
+Name:		superkaramba-theme-%{theme_name}
+Version:	3.0
+Release:	8
+License:	GPL
+Group:		Monitoring
+Url:		http://kde-look.org/content/show.php?content=21396
+Source0:	%{theme_name}-%{version}.tar.bz2
+Requires:	superkaramba
+BuildArch:	noarch
 
 %description
 This is a superkaramba theme which is a desktop applet 
 that displays system information.
 
+%files
+%dir %{_datadir}/apps/superkaramba/themes/%{theme_name}
+%{_datadir}/apps/superkaramba/themes/%{theme_name}/*
 
-%prep
-rm -rf $RPM_BUILD_ROOT
-%setup -q -n %{theme_name}-%{version}
-
-%build
-
-%install
-mkdir -p $RPM_BUILD_ROOT/%{_datadir}/apps/superkaramba/themes/%{theme_name}
-cp -rf * %buildroot/%{_datadir}/apps/superkaramba/themes/%{theme_name} 
-chmod 755 %buildroot/%{_datadir}/apps/superkaramba/themes/%{theme_name}/programs/mails_pop3.pl
-
-%clean
-rm -rf $RPM_BUILD_ROOT
-
-%post 
+%post
 if [ $1 = 1 ]; then
 echo "THEME path=%{theme_name}/%{theme_name}.theme" >> %{_datadir}/apps/superkaramba/themes/default.theme
 fi
@@ -46,47 +30,15 @@ cat %{_datadir}/apps/superkaramba/themes/default.theme | grep -v "%{theme_name}"
 exit 0
 fi
 
+#----------------------------------------------------------------------------
 
-%files
-%defattr(-,root,root)
-%dir %{_datadir}/apps/superkaramba/themes/%{theme_name}
-%{_datadir}/apps/superkaramba/themes/%{theme_name}/*
+%prep
+%setup -q -n %{theme_name}-%{version}
 
+%build
 
-
-
-
-%changelog
-* Tue Sep 08 2009 Thierry Vignaud <tvignaud@mandriva.com> 3.0-7mdv2010.0
-+ Revision: 434191
-- rebuild
-
-* Sat Aug 02 2008 Thierry Vignaud <tvignaud@mandriva.com> 3.0-6mdv2009.0
-+ Revision: 261240
-- rebuild
-
-* Tue Jul 29 2008 Thierry Vignaud <tvignaud@mandriva.com> 3.0-5mdv2009.0
-+ Revision: 253757
-- rebuild
-
-* Sun Mar 02 2008 Nicolas Lécureuil <neoclust@mandriva.org> 3.0-3mdv2008.1
-+ Revision: 177559
-- [BUGFIX] Fix uninstall ( thanks misc) (Bug #22642)
-
-  + Olivier Blin <oblin@mandriva.com>
-    - restore BuildRoot
-
-* Mon Dec 17 2007 Thierry Vignaud <tvignaud@mandriva.com> 3.0-2mdv2008.1
-+ Revision: 128070
-- kill re-definition of %%buildroot on Pixel's request
-- use %%mkrel
-- import superkaramba-theme-fantastik
-
-
-* Sun Mar 06 2005 Sebastien Savarin <plouf@mandrake.org> 3.0-2mdk
-- spec file correction thanks to couriousous
-
-* Sat Mar 05 2005 Sebastien Savarin <plouf@mandrake.org> 3.0-1mdk
-- Initial Release.
-
+%install
+mkdir -p %{buildroot}%{_datadir}/apps/superkaramba/themes/%{theme_name}
+cp -rf * %{buildroot}%{_datadir}/apps/superkaramba/themes/%{theme_name}
+chmod 755 %{buildroot}%{_datadir}/apps/superkaramba/themes/%{theme_name}/programs/mails_pop3.pl
 
